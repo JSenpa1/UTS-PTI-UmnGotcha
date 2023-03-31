@@ -4,13 +4,148 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="game.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="logo"><center><img src="Asset untuk html/Main Menu/logo.png"></center></div>
+    <hr style="background-color: white; height: 2px; opacity: 1;"/>
+    <div class="player"><img src="Asset untuk html/Select Chara/Chara.png"></div>
+    <div class="object"></div>
+    <div class="container">
+        <div class="row row-cols-2 fixed-bottom mb-3 mx-2">
+            <div class="col my-1"><button class="myButton">Makan</button></div>
+            <div class="col my-1"><button class="myButton">Tidur</button></div>
+            <div class="col my-1"><button class="myButton">Main</button></div>
+            <div class="col my-1"><button class="myButton">Obat</button></div>
+        </div>
+    </div>
+
+    <div class="fixed-bottom">
+        <button class="buttonUp">^</button>
+        <button class="buttonDown">\/</button>
+        <button class="buttonLeft">&lt;</button>
+        <button class="buttonRight">&gt;</button>
+    </div>
+
     <script>
+        let player = document.querySelector('.player');
+        let object = document.querySelector('.object');
+        let moveBy = 50;
+        let score = 0;
+        let scoreElement = document.createElement('div');
+        scoreElement.innerHTML = `Score: ${score}`;
+        document.body.appendChild(scoreElement);
         
+        window.addEventListener('load', () =>{
+            const middleX = window.innerWidth / 2 - player.clientWidth / 2;
+            const middleY = window.innerHeight / 2 - player.clientHeight / 2;
+            player.style.position = 'absolute';
+            player.style.left = 600 + 'px';
+            player.style.top = middleY + 'px';
+            object.style.position = 'absolute';
+            const maxX = middleX + 50;
+            const maxY = middleY + 50;
+            const minX = middleX - 50;
+            const minY = middleY - 50;
+            object.style.left = Math.floor(Math.random() * (maxX - minX) + minX) + 'px';
+            object.style.top = Math.floor(Math.random() * (maxY - minY) + minY) + 'px';
+        });
+
+        window.addEventListener('keyup', (e) =>{
+            switch(e.key)
+            {
+                case 'ArrowLeft':
+                    player.style.left = parseInt(player.style.left) - moveBy + 'px';
+                    break;
+                
+                case 'ArrowRight':
+                    player.style.left = parseInt(player.style.left) + moveBy + 'px';
+                    break;
+
+                case 'ArrowUp':
+                    player.style.top = parseInt(player.style.top) - moveBy + 'px';
+                    break;
+
+                case 'ArrowDown':
+                    player.style.top = parseInt(player.style.top) + moveBy + 'px';
+                    break;
+            }
+            if (isColliding(player, object)) {
+                score++;
+                scoreElement.innerHTML = `Score: ${score}`;
+                object.style.display = 'none';
+                object.style.left = Math.floor(Math.random() * 500) + 'px';
+                object.style.top = Math.floor(Math.random() * 500) + 'px';
+                setTimeout(() => object.style.display = 'block', 2000);
+            }
+        });
+        
+        const buttonUp = document.querySelector('.buttonUp');
+        const buttonDown = document.querySelector('.buttonDown');
+        const buttonLeft = document.querySelector('.buttonLeft');
+        const buttonRight = document.querySelector('.buttonRight');
+
+        buttonUp.addEventListener('click', () => {
+            player.style.top = parseInt(player.style.top) - moveBy + 'px';
+            if (isColliding(player, object)) {
+                score++;
+                scoreElement.innerHTML = `Score: ${score}`;
+                object.style.display = 'none';
+                object.style.left = Math.floor(Math.random() * 500) + 'px';
+                object.style.top = Math.floor(Math.random() * 500) + 'px';
+                setTimeout(() => object.style.display = 'block', 2000);
+            }
+        });
+
+        buttonDown.addEventListener('click', () => {
+            player.style.top = parseInt(player.style.top) + moveBy + 'px';
+            if (isColliding(player, object)) {
+                score++;
+                scoreElement.innerHTML = `Score: ${score}`;
+                object.style.display = 'none';
+                object.style.left = Math.floor(Math.random() * 500) + 'px';
+                object.style.top = Math.floor(Math.random() * 500) + 'px';
+                setTimeout(() => object.style.display = 'block', 2000);
+            }
+        });
+
+        buttonLeft.addEventListener('click', () => {
+            player.style.left = parseInt(player.style.left) - moveBy + 'px';
+            if (isColliding(player, object)) {
+                score++;
+                scoreElement.innerHTML = `Score: ${score}`;
+                object.style.display = 'none';
+                object.style.left = Math.floor(Math.random() * 500) + 'px';
+                object.style.top = Math.floor(Math.random() * 500) + 'px';
+                setTimeout(() => object.style.display = 'block', 2000);
+            }
+        });
+
+        buttonRight.addEventListener('click', () => {
+            player.style.left = parseInt(player.style.left) + moveBy + 'px';
+            if (isColliding(player, object)) {
+                score++;
+                scoreElement.innerHTML = `Score: ${score}`;
+                object.style.display = 'none';
+                object.style.left = Math.floor(Math.random() * 500) + 'px';
+                object.style.top = Math.floor(Math.random() * 500) + 'px';
+                setTimeout(() => object.style.display = 'block', 2000);
+            }
+        });
+
+        function isColliding(el1, el2) {
+            let rect1 = el1.getBoundingClientRect();
+            let rect2 = el2.getBoundingClientRect();
+            return !(
+            rect1.bottom < rect2.top ||
+            rect1.top > rect2.bottom ||
+            rect1.right < rect2.left ||
+            rect1.left > rect2.right
+            );
+        }
     </script>
 </body>
 </html>

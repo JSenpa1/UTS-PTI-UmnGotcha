@@ -1,0 +1,90 @@
+body
+{
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.4), 
+        rgba(0, 0, 0, 0.4)
+      ),url("../Asset untuk html/background.jpg");
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+.logo img
+{
+    height: 100px;
+    width: auto;
+}
+
+.player img
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.object
+{
+    background-color: lightblue;
+    height: 100px;
+    width: 100px;
+}
+
+.fixed-bottom
+{
+    width: 500px;
+}
+
+.container {
+    position: fixed;
+    bottom: 7%;
+    left: 82%;
+    transform: translateX(-50%);
+    width: 500px;
+}
+  
+.row {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.col
+{
+    width: 100px;
+}
+
+.myButton
+{
+    width: 100px;
+}
+
+.buttonUp
+{
+    position: fixed;
+    right: 10%;
+    bottom: 25%;
+}
+
+.buttonLeft
+{
+    position: fixed;
+    right: 13%;
+    bottom: 19%;
+}
+
+.buttonDown
+{
+    position: fixed;
+    right: 10%;
+    bottom: 13%;
+}
+
+.buttonRight
+{
+    position: fixed;
+    right: 7%;
+    bottom: 19%;
+}
