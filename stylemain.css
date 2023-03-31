@@ -1,0 +1,17 @@
+.logo img {
+    max-width: 25%;
+    max-height: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 260px;
+ }
+ .tombol img {
+    max-width: 15%;
+    max-height: 15%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+ }
+ 

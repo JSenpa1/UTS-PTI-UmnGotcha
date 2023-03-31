@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styletidur.css">
+    <script src="data.js"></script>
+    <title>Tidur</title>
+    <style>
+        body
+       {
+           background-image: url("Asset untuk html/tidur/bg.png");
+           background-repeat: no-repeat;
+           background-size: cover;      
+       }       
+   </style>
+</head>
+<body>
+    <div id="bungkus">
+        <div class="header">
+            <img src="Asset untuk html/home/logo.png">
+        <hr>
+        </div>
+        <div class="body">
+            <div class="greetings">
+                Good Morning Yourname
+                <!-- Good Morning, Good Afternoon, Good Night sesuai waktu di game -->
+                <br>
+                <br>
+                99:99 
+                <!-- ini jam, untuk perbandingannya 1 detik di real life = 1 menit di game -->
+            </div>
+            <div class="bodyTengah">
+                <div class="btnkiri">
+                    <button class="btn"><span>MAKAN</span></button>
+                    <br>
+                    <button class="btn"><span>MAIN</span></button>
+                </div>
+                <div class="btnkanan">
+                    <button class="btn"><span>TIDUR</span></button>
+                    <br>
+                    <button class="btn"><span>OBAT</span></button>
+                </div>
+                <div class="chara">
+                    <img src="Asset untuk html/home/Chara.png">
+                </div>
+                <div class="bar">
+                    <progress id="health" value="90" max="100"></progress>
+                    <br>
+                    <progress id="play" value="80" max="100"></progress>
+                    <br>
+                    <progress id="med" value="70" max="100"></progress>
+                    <br>
+                    <progress id="stamina" value="60" max="100"></progress>
+                </div>
+            </div>
+               
+        </div>
+    </div>
+</body>
+</html>
