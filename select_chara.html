@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylechara.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Select Character</title>
     <style>
         body {
@@ -21,10 +23,19 @@
         <div class="header">
             <img src="Asset untuk html/Select Chara/logo.png">
         </div>
-        <div class="body">
             <div class="chara">
-                <img src="Asset untuk html/Select Chara/Chara.png">
+                <img id="charImg" src="Asset untuk html/Select Chara/Chara.png">
             </div>
+            <center>
+            <div class="row my-3">
+                <div class="col">
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-light mr-3" id="prevBtn">&lt;</button>
+                    <button type="button" class="btn btn-light mr-3" id="nextBtn">&gt;</button>
+                  </div>
+                </div>
+              </div>
+            </center>
             <div class="PetName">
                 Enter Pet Name Here
             </div>
@@ -32,9 +43,8 @@
                 <form>
                     <input type="text" id="petname">
                     <br>
-                    <button class="btn" type="button" onclick="saveNameAndRedirect()"><span>PLAY</span></button>
+                    <button class="btn btn-light" type="button" onclick="saveNameAndRedirect()"><span>PLAY</span></button>
                     <br>
-                    <meter value="70" min="0" max="100"></meter>
                 </form>
             </center>
         </div>
@@ -43,9 +53,43 @@
     <script>
         function saveNameAndRedirect() {
             var petname = document.getElementById("petname").value;
+            const charImg = document.getElementById("charImg").src;
             localStorage.setItem("petname", petname);
+            localStorage.setItem("charImg", charImg);
             window.location.href = "home.html";
         }
+
+        var charImg = document.getElementById("charImg");
+        var prevBtn = document.getElementById("prevBtn");
+        var nextBtn = document.getElementById("nextBtn");
+
+        var imgUrls = [
+        "Asset untuk html/Select Chara/Chara.png",
+        "Asset untuk html/character/chara2/chara2.png",
+        "Asset untuk html/character/chara3/chara3.png"
+        ];
+
+        var currentImgIndex = 0;
+
+        function setCharImg() {
+        charImg.setAttribute("src", imgUrls[currentImgIndex]);
+        }
+
+        prevBtn.addEventListener("click", function() {
+        currentImgIndex--;
+        if (currentImgIndex < 0) {
+            currentImgIndex = imgUrls.length - 1;
+        }
+        setCharImg();
+        });
+
+        nextBtn.addEventListener("click", function() {
+        currentImgIndex++;
+        if (currentImgIndex >= imgUrls.length) {
+            currentImgIndex = 0;
+        }
+        setCharImg();
+        });
     </script>
 </body>
 

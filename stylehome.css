@@ -1,3 +1,9 @@
+body
+{
+  background-image: url("Asset untuk html/Untitled-1.png");
+  background-size: cover;
+}
+
 @font-face {
     font-family: "PixleText";
     src: url("Asset untuk html/font/PublicPixel-z84yD.ttf") format(truetype);

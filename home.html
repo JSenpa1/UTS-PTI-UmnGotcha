@@ -7,15 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylehome.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="data.js"></script>
     <title>Home</title>
-    <style>
-        body {
-            background-image: url("Asset untuk html/background.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    </style>
 </head>
 
 <body>
@@ -67,7 +59,7 @@
             </div>
             <br />
             <div class="chara">
-                <img src="Asset untuk html/home/Chara.png">
+                <img id="petImage" src="">
             </div>
         </div>
 
@@ -115,6 +107,8 @@
         // Get pet name from localStorage and display it
         var petname = localStorage.getItem("petname");
         document.getElementById("petname").textContent = petname;
+        const charImg = localStorage.getItem("charImg");
+        document.getElementById("petImage").src = charImg;
 
         // Update time every second
         var timeElement = document.querySelector(".greetings > #time");
@@ -136,11 +130,16 @@
             var time = parseInt(hours.toString() + minutes.toString());
             if (time >= 1900 || time < 400) {
                 greetingElement.textContent = "Good Night, ";
+                document.body.style.backgroundImage = "url('Asset untuk html/Untitled-3.png')";
+                
             } else if (time >= 400 && time < 1100) {
+                document.body.style.backgroundImage = "url('Asset untuk html/Untitled-1.png')";
                 greetingElement.textContent = "Good Morning, ";
             } else if (time >= 1100 && time < 1500) {
+                document.body.style.backgroundImage = "url('Asset untuk html/Untitled-1.png')";
                 greetingElement.textContent = "Good Afternoon, ";
             } else {
+                document.body.style.backgroundImage = "url('Asset untuk html/Untitled-2.png')";
                 greetingElement.textContent = "Good Evening, ";
             }
         }
