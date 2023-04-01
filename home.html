@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylehome.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="data.js"></script>
     <title>Home</title>
     <style>
@@ -22,6 +23,40 @@
         <div class="header">
             <img src="Asset untuk html/home/logo.png">
         </div>
+        <center>
+        <div class="bars">
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 col-lg-6">
+                <div class="bar-container">
+                  <label for="health">Health</label>
+                  <meter value="100" min="0" max="100" low="25" id="health"></meter>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <div class="bar-container">
+                  <label for="food">Food</label>
+                  <meter value="100" min="0" max="100" low="25" id="food"></meter>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-6">
+                <div class="bar-container">
+                  <label for="sleep">Sleep</label>
+                  <meter value="100" min="0" max="100" low="25" id="sleep"></meter>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <div class="bar-container">
+                  <label for="exp">EXP</label>
+                  <meter value="0" min="0" max="100" low="25" id="exp"></meter>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </center>
         <div class="body">
             <div class="greetings">
                 <span id="greeting"></span> <span id="petname"></span>
@@ -30,41 +65,51 @@
                 <span id="time">06:00</span>
                 <!-- Display the time starting from 06:00 -->
             </div>
-            <div class="bodyTengah">
-                <div class="btnkiri">
-                    <button id="btnMakan" class="btn"><span>MAKAN</span></button>
-                    <br>
-                    <button id="btnMain" class="btn"><span>MAIN</span></button>
-                </div>
-                <div class="btnkanan">
-                    <button id="btnTidur" class="btn"><span>TIDUR</span></button>
-                    <br>
-                    <button id="btnObat" class="btn"><span>OBAT</span></button>
-                </div>
-                <div class="chara">
-                    <img src="Asset untuk html/home/Chara.png">
-                </div>
-                <div>
-                    <div class="bar-container">
-                        <label for="health">Health</label>
-                        <meter value="100" min="0" max="100" low="25" id="health"></meter>
-                    </div>
-                    <div class="bar-container">
-                        <label for="food">Food</label>
-                        <meter value="100" min="0" max="100" low="25" id="food"></meter>
-                    </div>
-                    <div class="bar-container">
-                        <label for="sleep">Sleep</label>
-                        <meter value="100" min="0" max="100" low="25" id="sleep"></meter>
-                    </div>
-                    <div class="bar-container">
-                        <label for="exp">EXP</label>
-                        <meter value="0" min="0" max="100" low="25" id="exp"></meter>
-                    </div>
-                </div>
+            <br />
+            <div class="chara">
+                <img src="Asset untuk html/home/Chara.png">
             </div>
         </div>
+
+                <div class="container-fluid">
+                <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="btnkiri btn-group-vertical btn-block">
+                    <button id="btnMakan" class="btn btn-light"><span>MAKAN</span></button>
+                    <br>
+                    <button id="btnMain" class="btn btn-light"><span><a href="game.html">MAIN</a></span></button>
+                </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="btnkanan btn-group-vertical btn-block">
+                    <button id="btnTidur" class="btn btn-light"><span>TIDUR</span></button>
+                    <br>
+                    <button id="btnObat" class="btn btn-light"><span>OBAT</span></button>
+                </div>
+                </div>
+                </div>
+                </div>
+                <!-- <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="btn-group-vertical btn-block">
+                          <button id="btnMakan" class="btn btn-light btn-block"><span>MAKAN</span></button>
+                          <button id="btnMain" class="btn btn-light"><span><a href="game.html">MAIN</a></span></button>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="btn-group-vertical btn-block">
+                          <button id="btnTidur" class="btn btn-light"><span>TIDUR</span></button>
+                          <button id="btnObat" class="btn btn-light"><span>OBAT</span></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                  
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
         // Get pet name from localStorage and display it
         // Get pet name from localStorage and display it
@@ -121,7 +166,7 @@
         // Main button click event handler
         var btnMain = document.getElementById("btnMain");
         btnMain.addEventListener("click", function () {
-            hours += 6; // progress the time by 6 hours
+            hours += 6; // progress the time by 6 hours  
             if (hours >= 24) {
                 hours -= 24;
             }

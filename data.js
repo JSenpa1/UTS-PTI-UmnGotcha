@@ -3,3 +3,8 @@ function saveNameAndRedirect() {
     localStorage.setItem("petname", petname);
     window.location.href = "nextpage.html";
 }
+
+function saveValueandRedirect()
+{
+    var petname = document.getElementById("petname").value;
+}
