@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylechara.css">
-    <script src="data.js"></script>
     <title>Select Character</title>
     <style>
-        body
-       {
-           background-image: url("Asset untuk html/background.jpg");
-           background-repeat: no-repeat;
-           background-size: cover;      
-       }       
-   </style>
+        body {
+            background-image: url("Asset untuk html/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
+
 <body>
     <div id="bungkus">
         <div class="header">
             <img src="Asset untuk html/Select Chara/logo.png">
-        <hr>
         </div>
         <div class="body">
             <div class="chara">
@@ -29,16 +28,25 @@
             <div class="PetName">
                 Enter Pet Name Here
             </div>
-            <center><form>
-                <input type="text" id="petname">
-                <br>
-                <!-- <button class="btn" onclick="changeHTML()"><span>PLAY</span></button> -->
-                <button class="btn"><a href="#">PLAY</a></button>
-                <br>
-                <meter value="70" min="0" max="100"></meter>
-            </form></center>
+            <center>
+                <form>
+                    <input type="text" id="petname">
+                    <br>
+                    <button class="btn" type="button" onclick="saveNameAndRedirect()"><span>PLAY</span></button>
+                    <br>
+                    <meter value="70" min="0" max="100"></meter>
+                </form>
+            </center>
         </div>
     </div>
 
+    <script>
+        function saveNameAndRedirect() {
+            var petname = document.getElementById("petname").value;
+            localStorage.setItem("petname", petname);
+            window.location.href = "home.html";
+        }
+    </script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,55 +9,238 @@
     <script src="data.js"></script>
     <title>Home</title>
     <style>
-        body
-       {
-           background-image: url("Asset untuk html/background.jpg");
-           background-repeat: no-repeat;
-           background-size: cover;      
-       }       
-   </style>
+        body {
+            background-image: url("Asset untuk html/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
+
 <body>
     <div id="bungkus">
         <div class="header">
             <img src="Asset untuk html/home/logo.png">
-        <hr>
         </div>
         <div class="body">
             <div class="greetings">
-                Good Morning Yourname
-                <!-- Good Morning, Good Afternoon, Good Night sesuai waktu di game -->
+                <span id="greeting"></span> <span id="petname"></span>
                 <br>
                 <br>
-                99:99 
-                <!-- ini jam, untuk perbandingannya 1 detik di real life = 1 menit di game -->
+                <span id="time">06:00</span>
+                <!-- Display the time starting from 06:00 -->
             </div>
             <div class="bodyTengah">
                 <div class="btnkiri">
-                    <button class="btn"><span>MAKAN</span></button>
+                    <button id="btnMakan" class="btn"><span>MAKAN</span></button>
                     <br>
-                    <button class="btn"><span>MAIN</span></button>
+                    <button id="btnMain" class="btn"><span>MAIN</span></button>
                 </div>
                 <div class="btnkanan">
-                    <button class="btn"><span>TIDUR</span></button>
+                    <button id="btnTidur" class="btn"><span>TIDUR</span></button>
                     <br>
-                    <button class="btn"><span>OBAT</span></button>
+                    <button id="btnObat" class="btn"><span>OBAT</span></button>
                 </div>
                 <div class="chara">
                     <img src="Asset untuk html/home/Chara.png">
                 </div>
-                <div class="bar">
-                    <progress id="health" value="90" max="100"></progress>
-                    <br>
-                    <progress id="play" value="80" max="100"></progress>
-                    <br>
-                    <progress id="med" value="70" max="100"></progress>
-                    <br>
-                    <progress id="stamina" value="60" max="100"></progress>
+                <div>
+                    <div class="bar-container">
+                        <label for="health">Health</label>
+                        <meter value="100" min="0" max="100" low="25" id="health"></meter>
+                    </div>
+                    <div class="bar-container">
+                        <label for="food">Food</label>
+                        <meter value="100" min="0" max="100" low="25" id="food"></meter>
+                    </div>
+                    <div class="bar-container">
+                        <label for="sleep">Sleep</label>
+                        <meter value="100" min="0" max="100" low="25" id="sleep"></meter>
+                    </div>
+                    <div class="bar-container">
+                        <label for="exp">EXP</label>
+                        <meter value="0" min="0" max="100" low="25" id="exp"></meter>
+                    </div>
                 </div>
             </div>
-               
         </div>
     </div>
+    <script>
+        // Get pet name from localStorage and display it
+        // Get pet name from localStorage and display it
+        var petname = localStorage.getItem("petname");
+        document.getElementById("petname").textContent = petname;
+
+        // Update time every second
+        var timeElement = document.querySelector(".greetings > #time");
+        var greetingElement = document.querySelector(".greetings > #greeting");
+        var hours = 6;
+        var minutes = 0;
+        var intervalId;
+
+        function updateClock() {
+            minutes += 1;
+            if (minutes >= 60) {
+                hours++;
+                minutes -= 60;
+            }
+            var timeString = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
+            timeElement.textContent = timeString;
+
+            // Update greeting based on time
+            var time = parseInt(hours.toString() + minutes.toString());
+            if (time >= 1900 || time < 400) {
+                greetingElement.textContent = "Good Night, ";
+            } else if (time >= 400 && time < 1100) {
+                greetingElement.textContent = "Good Morning, ";
+            } else if (time >= 1100 && time < 1500) {
+                greetingElement.textContent = "Good Afternoon, ";
+            } else {
+                greetingElement.textContent = "Good Evening, ";
+            }
+        }
+
+        intervalId = setInterval(updateClock, 1000);
+
+
+
+
+        // Tidur button click event handler
+        var btnTidur = document.querySelector(".btnkanan > .btn:first-of-type");
+        btnTidur.addEventListener("click", function () {
+            var sleepMeter = document.getElementById("sleep");
+            sleepMeter.value = 100; // fill up the sleep meter
+            hours += 8; // pass 8 hours
+            if (hours >= 24) {
+                hours -= 24;
+            }
+            updateClock();
+        });
+
+        // Main button click event handler
+        // Main button click event handler
+        var btnMain = document.getElementById("btnMain");
+        btnMain.addEventListener("click", function () {
+            hours += 6; // progress the time by 6 hours
+            if (hours >= 24) {
+                hours -= 24;
+            }
+            var timeString = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
+            timeElement.textContent = timeString;
+        });
+
+
+        // Play button click event handler
+        var btnPlay = document.querySelector(".btnkiri > .btn:last-of-type");
+        btnPlay.addEventListener("click", function () {
+            minutes += 10; // progress the time by 10 minutes
+            if (minutes >= 60) {
+                hours++;
+                minutes -= 60;
+            }
+            updateClock();
+        });
+
+        // Obat button click event handler
+        // Makan button click event handler
+        var btnMakan = document.querySelector(".btnkiri > .btn:first-of-type");
+        btnMakan.addEventListener("click", function () {
+            var foodMeter = document.getElementById("food");
+            var healthMeter = document.getElementById("health");
+            var sleepMeter = document.getElementById("sleep");
+            foodMeter.value += 20; // increase food meter by 20
+            if (foodMeter.value > 100) {
+                foodMeter.value = 100;
+            }
+            minutes += 30; // progress the time by 30 minutes
+            if (minutes >= 60) {
+                hours++;
+                minutes -= 60;
+            }
+            updateClock();
+            sleepMeter.value -= 5; // decrease sleep meter by 5
+        });
+
+        // Obat button click event handler
+        var btnObat = document.querySelector(".btnkanan > .btn:last-of-type");
+        btnObat.addEventListener("click", function () {
+            var foodMeter = document.getElementById("food");
+            var healthMeter = document.getElementById("health");
+            var sleepMeter = document.getElementById("sleep");
+            healthMeter.value += 20; // increase health meter by 20
+            if (healthMeter.value > 100) {
+                healthMeter.value = 100;
+            }
+            minutes += 10; // progress the time by 10 minutes
+            if (minutes >= 60) {
+                hours++;
+                minutes -= 60;
+            }
+            updateClock();
+            sleepMeter.value -= 5; // decrease sleep meter by 5
+        });
+
+
+        // Decrement health, food, and sleep meters by 10 every minute
+        setInterval(function () {
+            var healthMeter = document.getElementById("health");
+            var foodMeter = document.getElementById("food");
+            var sleepMeter = document.getElementById("sleep");
+            healthMeter.value -= 1;
+            foodMeter.value -= 1;
+            sleepMeter.value -= 1;
+            if (healthMeter.value < 0) {
+                healthMeter.value = 0;
+            }
+            if (foodMeter.value < 0) {
+                foodMeter.value = 0;
+            }
+            if (sleepMeter.value < 0) {
+                sleepMeter.value = 0;
+            }
+            // Check if game is over
+            if (healthMeter.value == 0 || foodMeter.value == 0 || sleepMeter.value == 0) {
+                // Game over
+                alert("Game Over!");
+                // Stop the decrementing of meters
+                clearInterval(intervalId);
+            }
+        }, 60000); // 1 minute = 60,000 milliseconds
+
+
+        var btnMain = document.getElementById("btnMain");
+        btnMain.addEventListener("click", function () {
+            var foodMeter = document.getElementById("food");
+            var healthMeter = document.getElementById("health");
+            var sleepMeter = document.getElementById("sleep");
+            var expMeter = document.getElementById("exp");
+            foodMeter.value -= 30; // decrease food meter by 30
+            healthMeter.value -= 30; // decrease health meter by 30
+            sleepMeter.value -= 30; // decrease sleep meter by 30
+            if (foodMeter.value < 0) {
+                foodMeter.value = 0;
+            }
+            if (healthMeter.value < 0) {
+                healthMeter.value = 0;
+            }
+            if (sleepMeter.value < 0) {
+                sleepMeter.value = 0;
+            }
+            expMeter.value += 50; // increase exp meter by 50
+            if (expMeter.value > 100) {
+                expMeter.value = 100;
+            }
+            hours += 6; // progress the time by 6 hours
+            if (hours >= 24) {
+                hours -= 24;
+            }
+            var timeString = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
+            timeElement.textContent = timeString;
+        });
+
+
+
+    </script>
 </body>
+
 </html>

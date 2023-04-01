@@ -45,4 +45,38 @@
     margin-top: 50px;
 }
 
+#health {
+    height: 20px;
+    width: 200px;
+    background-color: #f44336;
+  }
+  
+  #food {
+    height: 20px;
+    width: 200px;
+    background-color: #4caf50;
+  }
+  
+  #sleep {
+    height: 20px;
+    width: 200px;
+    background-color: #2196f3;
+  }
+  
+  #exp {
+    height: 20px;
+    width: 200px;
+    background-color: #ffc107;
+  }
+  
+  .bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .bar-container label {
+    margin-bottom: 5px;
+  }
   
