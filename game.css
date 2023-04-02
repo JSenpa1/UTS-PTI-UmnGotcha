@@ -132,12 +132,17 @@ body
     top: 50%;
     left: 50%;
     height: 100px;
-    width: 100px;
+    width: auto;
 }
 
 .object
 {
-    background-color: lightblue;
+    height: 100px;
+    width: 100px;
+}
+
+.object img
+{
     height: 100px;
     width: 100px;
 }

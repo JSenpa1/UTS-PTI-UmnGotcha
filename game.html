@@ -17,15 +17,15 @@
         <div class="container-fluid">
             <div class="row">
               <div class="col-md-6 col-lg-6 order-md-2">
-                <div class="bar-container">
-                  <label for="health">Health</label>
-                  <meter value="100" min="0" max="100" low="25" id="health"></meter>
+                  <div class="bar-container">
+                    <label for="food">Food</label>
+                    <meter value="50" min="0" max="100" low="25" id="food"></meter>
                 </div>
-              </div>
-              <div class="col-md-6 col-lg-6">
-                <div class="bar-container">
-                  <label for="food">Food</label>
-                  <meter value="100" min="0" max="100" low="25" id="food"></meter>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                  <div class="bar-container">
+                    <label for="health">Health</label>
+                    <meter value="50" min="0" max="100" low="25" id="health"></meter>
                 </div>
               </div>
             </div>
@@ -33,7 +33,7 @@
               <div class="col-md-6 col-lg-6">
                 <div class="bar-container">
                   <label for="sleep">Sleep</label>
-                  <meter value="100" min="0" max="100" low="25" id="sleep"></meter>
+                  <meter value="50" min="0" max="100" low="25" id="sleep"></meter>
                 </div>
               </div>
               <div class="col-md-6 col-lg-6">
@@ -54,8 +54,8 @@
                 <span id="time">06:00</span>
                 <!-- Display the time starting from 06:00 -->
             </div>
-    <div class="player" id="my-image"><img src="Asset untuk html/Select Chara/Chara.png"></div>
-    <div class="object"></div>
+    <div class="player" id="my-image"><img id="petImage" src=""></div>
+    <div class="object"><img src="Asset untuk html/bintang.png" /></div>
     <!-- <div class="container">
         <div class="row row-cols-2 fixed-bottom mb-3 mx-2">
             <div class="col my-1"><button class="myButton">Makan</button></div>
@@ -91,6 +91,8 @@
         <button class="buttonRight">&gt;</button>
     </div>
     <script>
+        const charImg = localStorage.getItem("charImg");
+        document.getElementById("petImage").src = charImg;
         let player = document.querySelector('.player');
         let object = document.querySelector('.object');
         let moveBy = 50;
@@ -98,7 +100,7 @@
         let scoreElement = document.createElement('div');
         scoreElement.innerHTML = `Score: ${score}`;
         document.body.appendChild(scoreElement);
-        const image = document.getElementById('my-image');
+        const image = document.getElementById("my-image");
 
         
         window.addEventListener('load', () =>{
@@ -125,7 +127,7 @@
                     break;
                     
                 case 'ArrowRight':
-                    image.style.transform = 'scaleX(-1)';
+                    //image.style.transform = 'scaleX(-1)';
                     player.style.left = parseInt(player.style.left) + moveBy + 'px';
                 break;
 
@@ -191,7 +193,7 @@
         
         buttonRight.addEventListener('click', () => {
             player.style.left = parseInt(player.style.left) + moveBy + 'px';
-            image.style.transform = 'scaleX(-1)';
+            //image.style.transform = 'scaleX(-1)';
             if (isColliding(player, object)) {
                 score++;
                 scoreElement.innerHTML = `Score: ${score}`;
@@ -234,17 +236,17 @@
             var timeString = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
             timeElement.textContent = timeString;
 
-            // // Update greeting based on time
-            // var time = parseInt(hours.toString() + minutes.toString());
-            // if (time >= 1900 || time < 400) {
-            //     greetingElement.textContent = "Good Night, ";
-            // } else if (time >= 400 && time < 1100) {
-            //     greetingElement.textContent = "Good Morning, ";
-            // } else if (time >= 1100 && time < 1500) {
-            //     greetingElement.textContent = "Good Afternoon, ";
-            // } else {
-            //     greetingElement.textContent = "Good Evening, ";
-            // }
+            // Update greeting based on time
+            var time = parseInt(hours.toString() + minutes.toString());
+            if (time >= 1900 || time < 400) {
+                document.body.style.backgroundImage = "url('Asset untuk html/game_background_1.png')";
+            } else if (time >= 400 && time < 1100) {
+                document.body.style.backgroundImage = "url('Asset untuk html/game_background_4.png')";
+            } else if (time >= 1100 && time < 1500) {
+                document.body.style.backgroundImage = "url('Asset untuk html/game_background_4.png')";
+            } else {
+                document.body.style.backgroundImage = "url('Asset untuk html/game_background_2.png')";
+            }
         }
 
         intervalId = setInterval(updateClock, 1000);
@@ -384,6 +386,15 @@
             var timeString = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
             timeElement.textContent = timeString;
         });
+
+        var health = localStorage.getItem("health");
+        document.getElementById("health").value = health;
+        var food = localStorage.getItem("food");
+        document.getElementById("food").value = food;
+        var sleep = localStorage.getItem("sleep");
+        document.getElementById("sleep").value = sleep;
+        var exp = localStorage.getItem("exp");
+        document.getElementById("exp").value = exp;
     </script>
 </body>
 </html>
