@@ -44,9 +44,10 @@
                   <label for="exp">EXP</label>
                   <meter value="0" min="0" max="100" low="25" id="exp"></meter>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
+        <p class="level" id="level">Level 1</p>
+    </div>
         </div>
         </center>
         <div class="body">
@@ -297,7 +298,40 @@
             timeElement.textContent = timeString;
         });
 
+        const meter = document.getElementById("exp");
+        let value = 0;
+        setInterval(() => 
+        {
+            value += 2;
+            if (value > 100) value = 100;
+            meter.value = value;
+        }, 30000);
 
+        // Inisialisasi variabel level awal
+        let level = 1;
+
+        function increaseExp() 
+        {
+            const expMeter = document.getElementById("exp");
+            const currentExp = parseInt(expMeter.value);
+            const newExp = currentExp + 3;
+    
+            // Cek apakah exp sudah mencapai 100
+            if (newExp >= 100) 
+            {
+            // Jika ya, tingkatkan level dan reset exp
+                level++;
+                expMeter.value = 0;
+                document.getElementById("level").textContent = "Level " + level;
+            } else 
+            {
+                // Jika belum, tingkatkan exp
+                expMeter.value = newExp;
+            }
+        }
+// Panggil fungsi increaseExp setiap 20 detik
+        setInterval(increaseExp, 30000);
+</script>
 
     </script>
 </body>
