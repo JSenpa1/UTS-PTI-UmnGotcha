@@ -43,7 +43,7 @@
                 </div>
               </div>
             </div>
-            <p class="level" id="level"></p>
+            <!-- <p class="level" id="level"></p> -->
           </div>
         </div>
         </center>
@@ -101,14 +101,12 @@
             var food = document.getElementById("food").value;
             var sleep = document.getElementById("sleep").value;
             var exp = document.getElementById("exp").value;
-            var level = document.getElementById("level").textContent;
             var petImage = document.getElementById("petImage").src;
             // var time = document.getElementById("time").value;
             localStorage.setItem("health", health);
             localStorage.setItem("food", food);
             localStorage.setItem("sleep", sleep);
             localStorage.setItem("exp", exp);
-            localStorage.setItem("level", level);
             localStorage.setItem("petImage", petImage);
             // localStorage.setItem("time", time);
             window.location.href = "home.html";
