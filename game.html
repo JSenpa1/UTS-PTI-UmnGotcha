@@ -43,7 +43,7 @@
                 </div>
               </div>
             </div>
-            <!-- <p class="level" id="level"></p> -->
+            <p class="level" id="level"></p>
           </div>
         </div>
         </center>
@@ -507,24 +507,10 @@
                 // If yes, increase level and reset exp
                 if(level >= 3)
                 {
-                    if(img.src.includes("Untitled34_20230402121238.png"))
-                    {
-                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402121748.png";
-                        return;
-                    }
+                    return;
+                } 
 
-                    if(img.src.includes("Untitled34_20230402122203.png"))
-                    {
-                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402122252.png";
-                        return;
-                    }
-
-                    if(img.src.includes("Untitled34_20230402123124.png"))
-                    {
-                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402123255.png";
-                        return;
-                    }
-                } else 
+                else 
                 {
                     level++;
                     expMeter.value = 0;
