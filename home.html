@@ -68,36 +68,20 @@
                 <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="btnkiri btn-group-vertical btn-block">
-                    <button id="btnMakan" class="btn btn-light"><span>MAKAN</span></button>
+                    <button id="btnMakan" class="btn btn-light" onclick="changeImageMakan()"><span>MAKAN</span></button>
                     <br>
                     <button id="btnMain" class="btn btn-light" onclick="saveValueAndRedirect()"><span>MAIN</span></button>
                 </div>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="btnkanan btn-group-vertical btn-block">
-                    <button id="btnTidur" class="btn btn-light"><span>TIDUR</span></button>
+                    <button id="btnTidur" class="btn btn-light" onclick="changeImageTidur()"><span>TIDUR</span></button>
                     <br>
-                    <button id="btnObat" class="btn btn-light"><span>OBAT</span></button>
+                    <button id="btnObat" class="btn btn-light" onclick="changeImageMakan()"><span>OBAT</span></button>
                 </div>
                 </div>
                 </div>
                 </div>
-                <!-- <div class="container-fluid">
-                    <div class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="btn-group-vertical btn-block">
-                          <button id="btnMakan" class="btn btn-light btn-block"><span>MAKAN</span></button>
-                          <button id="btnMain" class="btn btn-light"><span><a href="game.html">MAIN</a></span></button>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                        <div class="btn-group-vertical btn-block">
-                          <button id="btnTidur" class="btn btn-light"><span>TIDUR</span></button>
-                          <button id="btnObat" class="btn btn-light"><span>OBAT</span></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
                   
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -110,6 +94,80 @@
         document.getElementById("petname").textContent = petname;
         const charImg = localStorage.getItem("charImg");
         document.getElementById("petImage").src = charImg;
+        var exp = localStorage.getItem("exp");
+        document.getElementById("exp").value = exp;
+
+        function changeImageMakan()
+        {
+            var img = document.getElementById("petImage");
+            var oldSrc = img.src;
+            if(oldSrc.includes("chara1.png"))
+            {
+                var newSrc = "Asset untuk html/character/chara1/chara1makan2.png";
+                img.src = newSrc;
+                setTimeout(function() 
+                {
+                    img.src = oldSrc;
+                }, 15000); // 15 seconds in milliseconds
+            }
+
+            if(oldSrc.includes("chara2.png"))
+            {
+                var newSrc = "Asset untuk html/character/chara2/chara2makan2.png";
+                img.src = newSrc;
+                setTimeout(function() 
+                {
+                    img.src = oldSrc;
+                }, 15000); // 15 seconds in milliseconds
+            }
+
+            if(oldSrc.includes("chara3.png"))
+            {
+                var newSrc = "Asset untuk html/character/chara3/chara3makan2.png";
+                img.src = newSrc;
+                setTimeout(function() 
+                {
+                    img.src = oldSrc;
+                }, 15000); // 15 seconds in milliseconds
+            }
+        }
+        
+        function changeImageTidur()
+        {
+            {
+            var img = document.getElementById("petImage");
+            var oldSrc = img.src;
+            if(oldSrc.includes("chara1.png"))
+            {
+                var newSrc = "Asset untuk html/character/chara1/chara1tidur.gif";
+                img.src = newSrc;
+                setTimeout(function() 
+                {
+                    img.src = oldSrc;
+                }, 15000); // 15 seconds in milliseconds
+            }
+
+            if(oldSrc.includes("chara2.png"))
+            {
+                var newSrc = "Asset untuk html/character/chara2/chara2makan2.png";
+                img.src = newSrc;
+                setTimeout(function() 
+                {
+                    img.src = oldSrc;
+                }, 15000); // 15 seconds in milliseconds
+            }
+
+            if(oldSrc.includes("chara3.png"))
+            {
+                var newSrc = "Asset untuk html/character/chara3/chara3tidur.gif";
+                img.src = newSrc;
+                setTimeout(function() 
+                {
+                    img.src = oldSrc;
+                }, 15000); // 15 seconds in milliseconds
+            }
+            }
+        }
 
         function saveValueAndRedirect()
         {
@@ -117,11 +175,15 @@
             var food = document.getElementById("food").value;
             var sleep = document.getElementById("sleep").value;
             var exp = document.getElementById("exp").value;
+            var level = document.getElementById("level").textContent;
+            const charImg = document.getElementById("petImage").src;
             // var time = document.getElementById("time").value;
             localStorage.setItem("health", health);
             localStorage.setItem("food", food);
             localStorage.setItem("sleep", sleep);
             localStorage.setItem("exp", exp);
+            localStorage.setItem("level", level);
+            localStorage.setItem("charImg", charImg);
             // localStorage.setItem("time", time);
             window.location.href = "game.html";
         }
@@ -137,13 +199,18 @@
             minutes += 1;
             if (minutes >= 60) {
                 hours++;
-                minutes -= 60;
+                minutes = 0;
+            }
+
+            if (hours >= 24) {
+                hours = 0;
+                minutes = 0;
             }
             var timeString = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0");
             timeElement.textContent = timeString;
 
             // Update greeting based on time
-            var time = parseInt(hours.toString() + minutes.toString());
+            var time = hours * 100 + minutes;
             if (time >= 1900 || time < 400) {
                 greetingElement.textContent = "Good Night, ";
                 document.body.style.backgroundImage = "url('Asset untuk html/Untitled-3.png')";
@@ -154,7 +221,7 @@
             } else if (time >= 1100 && time < 1500) {
                 document.body.style.backgroundImage = "url('Asset untuk html/Untitled-1.png')";
                 greetingElement.textContent = "Good Afternoon, ";
-            } else {
+            } else if(time >= 1500 && time < 1900){
                 document.body.style.backgroundImage = "url('Asset untuk html/Untitled-2.png')";
                 greetingElement.textContent = "Good Evening, ";
             }
@@ -315,22 +382,159 @@
             const expMeter = document.getElementById("exp");
             const currentExp = parseInt(expMeter.value);
             const newExp = currentExp + 3;
-    
-            // Cek apakah exp sudah mencapai 100
+            var img = document.getElementById("petImage");
+
+            // Check if exp has reached 100
             if (newExp >= 100) 
             {
-            // Jika ya, tingkatkan level dan reset exp
-                level++;
-                expMeter.value = 0;
-                document.getElementById("level").textContent = "Level " + level;
-            } else 
-            {
-                // Jika belum, tingkatkan exp
-                expMeter.value = newExp;
+                // If yes, increase level and reset exp
+                if(level >= 3)
+                {
+                    if(img.src.includes("Untitled34_20230402121238.png"))
+                    {
+                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402121748.png";
+                        return;
+                    }
+
+                    if(img.src.includes("Untitled34_20230402122203.png"))
+                    {
+                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402122252.png";
+                        return;
+                    }
+
+                    if(img.src.includes("Untitled34_20230402123124.png"))
+                    {
+                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402123255.png";
+                        return;
+                    }
+                } else 
+                {
+                    level++;
+                    expMeter.value = 0;
+                    document.getElementById("level").textContent = "Level " + level;
+                }
+                
+                if(level == 2)
+                {
+                    var oldSrc = img.src;
+                    var newSrc = "Asset untuk html/Evolusi chara/Untitled34_20230402121238.png";
+                    if(oldSrc.includes("chara1.png"))
+                    {
+                        img.src = newSrc;
+                    }
+
+                    if(oldSrc.includes("chara2.png"))
+                    {
+                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402122203.png";
+                        newSrc = "Asset untuk html/Evolusi chara/Untitled34_20230402122203.png";
+                    }
+
+                    if(oldSrc.includes("chara3.png"))
+                    {
+                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402123124.png";
+                        newSrc = "Asset untuk html/Evolusi chara/Untitled34_20230402123124.png";
+                    }
+                }
+
+                if(level == 3)
+                {
+                    var oldSrc = img.src;
+                    if(oldSrc.includes("Untitled34_20230402121238.png"))
+                    {
+                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402121748.png";
+                    }
+
+                    if(oldSrc.includes("Untitled34_20230402122203.png"))
+                    {
+                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402122252.png";
+                    }
+
+                    if(oldSrc.includes("Untitled34_20230402123124.png"))
+                    {
+                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402123255.png";
+                    }
+                }
+
+                } else 
+                {
+                    // If not, increase exp
+                    expMeter.value = newExp;
+                }
             }
-        }
+
+            // Call increaseExp function every 20 seconds
+            setInterval(increaseExp, 30000);
+            // const expMeter = document.getElementById("exp");
+            // const currentExp = parseInt(expMeter.value);
+            // const newExp = currentExp + 3;
+            // var img = document.getElementById("petImage");
+    
+            // // Cek apakah exp sudah mencapai 100
+            // if (newExp >= 100) 
+            // {
+            // // Jika ya, tingkatkan level dan reset exp
+            // if(level == 2)
+            // {
+            //     var oldSrc = img.src;
+            //     if(oldSrc.includes("chara1.png"))
+            //     {
+            //         img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402121238.png";
+            //     }
+                
+            //     if(oldSrc.includes("chara2.png"))
+            //     {
+            //         img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402122203.png";
+            //     }
+                
+            //     if(oldSrc.includes("chara3.png"))
+            //     {
+            //         img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402123124.png";
+            //     }
+            // }
+            
+            // else 
+            // {
+            //     level++;
+            //     expMeter.value = 0;
+            //     document.getElementById("level").textContent = "Level " + level;
+            // }
+
+            // if(level >= 3)
+            // {
+            //     if(srcBaru.includes("Untitled34_20230402121238.png"))
+            //     {
+            //         img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402121748.png";
+            //         return;
+            //     }
+
+            //     if(srcBaru.includes("Untitled34_20230402122203.png"))
+            //     {
+            //         img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402122252.png";
+            //         return;
+            //     }
+
+            //     if(srcBaru.includes("Untitled34_20230402123124.png"))
+            //     {
+            //         img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402123255.png";
+            //         return;
+            //     }
+            // }
+
+            // } else 
+            // {
+            //     // Jika belum, tingkatkan exp
+            //     expMeter.value = newExp;
+            // }
+        //}
 // Panggil fungsi increaseExp setiap 20 detik
-        setInterval(increaseExp, 30000);
+        //setInterval(increaseExp, 100);
+        var health = localStorage.getItem("health");
+        document.getElementById("health").value = health;
+        var food = localStorage.getItem("food");
+        document.getElementById("food").value = food;
+        var sleep = localStorage.getItem("sleep");
+        document.getElementById("sleep").value = sleep;
+        
 </script>
 
     </script>

@@ -3,7 +3,7 @@ body
     background: linear-gradient(
         rgba(0, 0, 0, 0.4), 
         rgba(0, 0, 0, 0.4)
-      ),url("Asset untuk html/background.jpg");
+      ),url("");
     background-size: cover;
     background-repeat: repeat;
 }
@@ -98,7 +98,7 @@ body
         rgba(0, 0, 0, 0.4), 
         rgba(0, 0, 0, 0.4)
       );
-    height: 120px;
+    height: 140px;
     width: 500px;
   }
 
