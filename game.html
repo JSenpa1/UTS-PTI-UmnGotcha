@@ -92,6 +92,8 @@
         <button class="buttonRight">&gt;</button>
     </div>
     <script>
+        const charImg = localStorage.getItem("charImg");
+        document.getElementById("petImage").src = charImg;
 
         function saveValueAndRedirect()
         {
@@ -100,7 +102,7 @@
             var sleep = document.getElementById("sleep").value;
             var exp = document.getElementById("exp").value;
             var level = document.getElementById("level").textContent;
-            const petImage = document.getElementById("petImage").src;
+            var petImage = document.getElementById("petImage").src;
             // var time = document.getElementById("time").value;
             localStorage.setItem("health", health);
             localStorage.setItem("food", food);
@@ -184,8 +186,6 @@
             }
         }
 
-        const charImg = localStorage.getItem("petImage");
-        document.getElementById("petImage").src = charImg;
         let player = document.querySelector('.player');
         let object = document.querySelector('.object');
         let moveBy = 50;
@@ -193,7 +193,7 @@
         let scoreElement = document.createElement('div');
         scoreElement.innerHTML = `Score: ${score}`;
         document.body.appendChild(scoreElement);
-        const image = document.getElementById("my-image");
+        var image = document.getElementById("my-image");
         var exp = localStorage.getItem("exp");
         document.getElementById("exp").value = exp;
         
@@ -341,7 +341,7 @@
             timeElement.textContent = timeString;
 
             // Update greeting based on time
-            var time = parseInt(hours.toString() + minutes.toString());
+            var time = hours * 100 + minutes;
             if (time >= 1900 || time < 400) {
                 document.body.style.backgroundImage = "url('Asset untuk html/game_background_1.png')";
             } else if (time >= 400 && time < 1100) {
