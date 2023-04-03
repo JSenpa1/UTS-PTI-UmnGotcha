@@ -211,6 +211,9 @@
         });
 
         window.addEventListener('keyup', (e) =>{
+            var healthMeter = document.getElementById("health");
+            var foodMeter = document.getElementById("food");
+            var sleepMeter = document.getElementById("sleep");
             switch(e.key)
             {
                 case 'ArrowLeft':
@@ -233,6 +236,9 @@
             }
             if (isColliding(player, object)) {
                 score++;
+                healthMeter.value -= 3;
+                foodMeter.value -= 3;
+                sleepMeter.value -= 3;
                 exp = parseInt(exp) + 3;
                 document.getElementById("exp").value = exp;
                 scoreElement.innerHTML = `Score: ${score}`;
@@ -247,11 +253,17 @@
         const buttonDown = document.querySelector('.buttonDown');
         const buttonLeft = document.querySelector('.buttonLeft');
         const buttonRight = document.querySelector('.buttonRight');
+        var healthMeter = document.getElementById("health");
+        var foodMeter = document.getElementById("food");
+        var sleepMeter = document.getElementById("sleep");
 
         buttonUp.addEventListener('click', () => {
             player.style.top = parseInt(player.style.top) - moveBy + 'px';
             if (isColliding(player, object)) {
                 score++;
+                healthMeter.value -= 3;
+                foodMeter.value -= 3;
+                sleepMeter.value -= 3;
                 exp = parseInt(exp) + 3;
                 document.getElementById("exp").value = exp;
                 scoreElement.innerHTML = `Score: ${score}`;
@@ -266,6 +278,9 @@
             player.style.top = parseInt(player.style.top) + moveBy + 'px';
             if (isColliding(player, object)) {
                 score++;
+                healthMeter.value -= 3;
+                foodMeter.value -= 3;
+                sleepMeter.value -= 3;
                 exp = parseInt(exp) + 3;
                 document.getElementById("exp").value = exp;
                 scoreElement.innerHTML = `Score: ${score}`;
@@ -281,6 +296,9 @@
             image.style.transform = 'none';
             if (isColliding(player, object)) {
                 score++;
+                healthMeter.value -= 3;
+                foodMeter.value -= 3;
+                sleepMeter.value -= 3;
                 exp = parseInt(exp) + 3;
                 document.getElementById("exp").value = exp;
                 scoreElement.innerHTML = `Score: ${score}`;
@@ -296,6 +314,9 @@
             //image.style.transform = 'scaleX(-1)';
             if (isColliding(player, object)) {
                 score++;
+                healthMeter.value -= 3;
+                foodMeter.value -= 3;
+                sleepMeter.value -= 3;
                 exp = parseInt(exp) + 3;
                 document.getElementById("exp").value = exp;
                 scoreElement.innerHTML = `Score: ${score}`;
@@ -437,9 +458,9 @@
             var healthMeter = document.getElementById("health");
             var foodMeter = document.getElementById("food");
             var sleepMeter = document.getElementById("sleep");
-            healthMeter.value -= 1;
-            foodMeter.value -= 1;
-            sleepMeter.value -= 1;
+            healthMeter.value -= 10;
+            foodMeter.value -= 10;
+            sleepMeter.value -= 10;
             if (healthMeter.value < 0) {
                 healthMeter.value = 0;
             }
@@ -456,7 +477,7 @@
                 // Stop the decrementing of meters
                 clearInterval(intervalId);
             }
-        }, 60000); // 1 minute = 60,000 milliseconds
+        }, 30000); // 1 minute = 60,000 milliseconds
 
 
         var btnMain = document.getElementById("btnMain");
