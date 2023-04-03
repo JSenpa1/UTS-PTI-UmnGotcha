@@ -10,28 +10,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Select Character</title>
     <style>
-        body {
-            background-image: url("Asset untuk html/background.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+        /* @media(max-width:768px){
+            body {
+                background-image: url("Asset untuk html/background.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        } */
     </style>
 </head>
 
 <body>
-    <div id="bungkus">
-        <div class="header">
-            <img src="Asset untuk html/Select Chara/logo.png">
+    <div class="container" id="bungkus">
+        <div class="header mt-2">
+            <img src="Asset untuk html/Select Chara/logo.png" class="mx-auto d-flex">
         </div>
-            <div class="chara">
+            <div class="chara my-5">
                 <img id="charImg" src="Asset untuk html/character/chara1/chara1.png">
             </div>
             <center>
             <div class="row my-3">
                 <div class="col">
-                  <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-light mr-3" id="prevBtn">&lt;</button>
-                    <button type="button" class="btn btn-light mr-3" id="nextBtn">&gt;</button>
+                  <div class="btn-group mb-3 mb-md-0" role="group">
+                    <button type="button" class="slideBtn btn btn-light me-3" id="prevBtn">&lt;</button>
+                    <button type="button" class="slideBtn btn btn-light ms-3 me-0" id="nextBtn">&gt;</button>
                   </div>
                 </div>
               </div>
@@ -41,9 +43,9 @@
             </div>
             <center>
                 <form>
-                    <input type="text" id="petname">
+                    <input type="text" id="petname" class="form-control mb-3 mb-md-0 py-2">
                     <br>
-                    <button class="btn btn-light" type="button" onclick="saveNameAndRedirect()"><span>PLAY</span></button>
+                    <button class="btn btn-light" id="playButton" type="button" onclick="saveNameAndRedirect()"><span>PLAY</span></button>
                     <br>
                 </form>
             </center>

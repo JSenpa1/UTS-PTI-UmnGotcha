@@ -1,48 +1,141 @@
 @font-face {
     font-family: "PixleText";
     src: url("Asset untuk html/font/PublicPixel-z84yD.ttf") format(truetype);
- }
- .header img {
-    max-width: 15%;
-    max-height: 15%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
- }
-.chara img {
-    max-width: 12%;
-    max-height: 12%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 100px;
-}
-.PetName {
-    text-align: center;
-    font-size: 20px;
-    color: white;
-    font-family: "PixleText";
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
-#petname {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.btn {
-    font-family: "PixleText";
 }
 
-.btn a
-{
-    text-decoration: none;
-    color: black;
+@media(max-width: 768px){
+    body {
+        background-image: url("Asset untuk html/background.jpg");
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: 400%;
+        top: 100%;
+    }
+    .header img {
+        width: 75%;
+    }
+    .chara img {
+        width: 80%;
+        /* height: 12%; */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+    }
+    .PetName {
+        text-align: center;
+        font-size: 27px;
+        color: white;
+        font-family: "PixleText";
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #petname {
+        width: 75%;
+    }
+    #playButton{
+        height: 50px;
+        width: 100px;
+    }
+
+    #playButton:active{
+        transform: scale(1.1);
+    }
+    
+    .btn {
+        font-family: "PixleText";
+    }
+    
+    .btn a
+    {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .row
+    {
+        width: 125px;
+    }
 }
 
-.row
-{
-    width: 125px;
+@media(min-width: 769px){
+    body {
+        background-image: url("Asset untuk html/background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .header img {
+        width: 20%;
+     }
+    .chara img {
+        width: 15%;
+        /* max-height: 12%; */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        /* margin-top: 100px; */
+    }
+    .PetName {
+        text-align: center;
+        font-size: 20px;
+        color: white;
+        font-family: "PixleText";
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #petname {
+        width: 50%;
+    }
+    .btn {
+        font-family: "PixleText";
+    }
+    
+    .btn a
+    {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .row
+    {
+        width: 125px;
+    }
+
+    #playButton{
+        height: 50px;
+        width: 100px;
+    }
+
+    #playButton:active{
+        transform: scale(1.1);
+    }
+}
+
+.slideBtn{
+    /* width: fit-content;
+    min-width: 100px; */
+    height: 45px;
+    padding-bottom: 8px;
+    border-radius: 5px;
+    border: 2.5px solid #E0E1E4;
+    box-shadow: 0px 0px 20px -20px;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.2s ease-in-out 0ms;
+    user-select: none;
+}
+
+.slideBtn:hover{
+    background-color: #F2F2F2;
+    box-shadow: 0px 0px 20px -18px;
+}
+
+.slideBtn:active{
+    transform: scale(0.95);
 }
