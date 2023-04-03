@@ -101,7 +101,7 @@
         {
             var img = document.getElementById("petImage");
             var oldSrc = img.src;
-            if(oldSrc.includes("chara1.png"))
+            if(oldSrc.includes("chara1.png") || oldSrc.includes("Untitled34_20230402121238.png") || oldSrc.includes("Untitled34_20230402121748.png"))
             {
                 var newSrc = "Asset untuk html/character/chara1/chara1makan2.png";
                 img.src = newSrc;
@@ -111,7 +111,7 @@
                 }, 15000); // 15 seconds in milliseconds
             }
 
-            if(oldSrc.includes("chara2.png"))
+            if(oldSrc.includes("chara2.png") || oldSrc.includes("Untitled34_20230402122203.png") || oldSrc.includes("Untitled34_20230402122252.png"))
             {
                 var newSrc = "Asset untuk html/character/chara2/chara2makan2.png";
                 img.src = newSrc;
@@ -121,7 +121,7 @@
                 }, 15000); // 15 seconds in milliseconds
             }
 
-            if(oldSrc.includes("chara3.png"))
+            if(oldSrc.includes("chara3.png") || oldSrc.includes("Untitled34_20230402123124.png") || oldSrc.includes("Untitled34_20230402123255.png"))
             {
                 var newSrc = "Asset untuk html/character/chara3/chara3makan2.png";
                 img.src = newSrc;
@@ -137,7 +137,7 @@
             {
             var img = document.getElementById("petImage");
             var oldSrc = img.src;
-            if(oldSrc.includes("chara1.png"))
+            if(oldSrc.includes("chara1.png") || oldSrc.includes("Untitled34_20230402121238.png") || oldSrc.includes("Untitled34_20230402121748.png"))
             {
                 var newSrc = "Asset untuk html/character/chara1/chara1tidur.gif";
                 img.src = newSrc;
@@ -147,7 +147,7 @@
                 }, 15000); // 15 seconds in milliseconds
             }
 
-            if(oldSrc.includes("chara2.png"))
+            if(oldSrc.includes("chara2.png") || oldSrc.includes("Untitled34_20230402122203.png") || oldSrc.includes("Untitled34_20230402122252.png"))
             {
                 var newSrc = "Asset untuk html/character/chara2/chara2makan2.png";
                 img.src = newSrc;
@@ -157,7 +157,7 @@
                 }, 15000); // 15 seconds in milliseconds
             }
 
-            if(oldSrc.includes("chara3.png"))
+            if(oldSrc.includes("chara3.png") || oldSrc.includes("Untitled34_20230402123124.png") || oldSrc.includes("Untitled34_20230402123255.png"))
             {
                 var newSrc = "Asset untuk html/character/chara3/chara3tidur.gif";
                 img.src = newSrc;
@@ -390,23 +390,7 @@
                 // If yes, increase level and reset exp
                 if(level >= 3)
                 {
-                    if(img.src.includes("Untitled34_20230402121238.png"))
-                    {
-                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402121748.png";
-                        return;
-                    }
-
-                    if(img.src.includes("Untitled34_20230402122203.png"))
-                    {
-                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402122252.png";
-                        return;
-                    }
-
-                    if(img.src.includes("Untitled34_20230402123124.png"))
-                    {
-                        img.src = "Asset untuk html/Evolusi chara/Untitled34_20230402123255.png";
-                        return;
-                    }
+                    return;
                 } else 
                 {
                     level++;
