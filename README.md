@@ -1,5 +1,5 @@
 # UTS-PTI-UMN-GOTCHA
-Kelompok GS30PTI<br>
+Kelompok G30SPTI<br>
 Mohammad Thoriq<br>
 Jonathan S.<br>
 Louis G.H.<br>
