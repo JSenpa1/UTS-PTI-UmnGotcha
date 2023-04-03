@@ -4,6 +4,18 @@ body
   background-size: cover;
 }
 
+label
+{
+	font-family: "PixleText";
+	font-size: 12px;
+}
+
+.level
+{
+	font-family: "PixleText";
+	font-size: 10px;
+}
+
 @font-face {
     font-family: "PixleText";
     src: url("Asset untuk html/font/PublicPixel-z84yD.ttf") format(truetype);
@@ -95,6 +107,7 @@ body
       );
     height: 140px;
     width: 500px;
+	padding: 10px;
   }
 
   @media screen and (max-width: 768px) {

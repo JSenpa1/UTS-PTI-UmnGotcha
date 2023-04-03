@@ -13,6 +13,18 @@ body
     src: url("Asset untuk html/font/PublicPixel-z84yD.ttf") format(truetype);
  }
 
+label
+{
+	font-family: "PixleText";
+	font-size: 12px;
+}
+
+.level
+{
+	font-family: "PixleText";
+	font-size: 10px;
+}
+
  .header img {
     max-width: 12%;
     max-height: 12%;
@@ -100,6 +112,7 @@ body
       );
     height: 140px;
     width: 500px;
+	padding-top: 10px;
   }
 
   @media screen and (max-width: 768px) {
